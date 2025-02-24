@@ -35,8 +35,9 @@ plt.show() # renderize the plot to show it
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 101)
 
 #Checking the train and test size to prove they are 80% and 20% respectively
-print(f"\n The total X size is: {x.shape[0]}")
+print(f"\n The total X size is: {x.shape[0]} and is the {x.shape[0]/x.shape[0] * 100} % total")
 print(f"\n The X train size is: {x_train.shape[0]} and is the {x_train.shape[0]/x.shape[0] * 100} % of the total X")
 print(f"\n The X test size is: {x_test.shape[0]} and is the {x_test.shape[0]/x.shape[0] * 100} % of the total X")
 
 # --- END OF MAIN CODE ---
+
