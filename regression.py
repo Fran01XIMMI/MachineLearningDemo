@@ -1,4 +1,5 @@
 # --- IMPORT SECTION ---
+import math
 import pandas as pd # for DataFrames
 import numpy as np # for numpy array operations
 import matplotlib.pyplot as plt # for visualization
@@ -83,7 +84,8 @@ plt.plot(x_test,y_pred, color='blue', label= 'Predicted Data') #predicted data
 plt.legend() #show the legend
 plt.show()
 
-
-
+#Evaluating the model
+rmse = math.sqrt(mean_squared_error(y_test, y_pred)) # root mean squared error
+print(f"\nThe Mean Squared Error is: {rmse:.2f}")
 # --- END OF MAIN CODE ---
 
