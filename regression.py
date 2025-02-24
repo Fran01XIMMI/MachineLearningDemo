@@ -61,5 +61,29 @@ print(f"\n-- AFTER SCALING -- X_test:\n{x_test_scaled[:5]}")
 print(f"\n-- AFTER SCALING -- y_train:\n{y_train[:5]}")
 print(f"\n-- AFTER SCALING -- y_test:\n{y_test[:5]}")
 
+#linear Regression
+model = LinearRegression()
+
+#performing the training on the train data (i.e X_train_scaled, y_train)
+model.fit(x_train_scaled, y_train)
+
+#predicting new values
+y_pred = model.predict(x_test_scaled)
+
+
+#visualizing the parameters for the Regression after the training
+print(f"\n After the training, the params for the Regressor are: {model.coef_}") #the coefficient of the model
+
+# Visualizing the regression
+plt.title("Years of Experience vs Salary") #title for the plot
+plt.xlabel("Years of Experience") # title of x axis
+plt.ylabel("Salary") # title of y axis
+plt.scatter(x_test, y_test, color= 'red', label= 'Real Data') #actual plot
+plt.plot(x_test,y_pred, color='blue', label= 'Predicted Data') #predicted data
+plt.legend() #show the legend
+plt.show()
+
+
+
 # --- END OF MAIN CODE ---
 
