@@ -19,8 +19,8 @@ data = pd.read_csv(url)
 print(f"\nHere are the first 5 rows of the dataset:\n{data.head()}")
 
 #Separate the data in features and target
-x = data['YearsExperience']
-y = data['Salary']
+x = data['YearsExperience'].values.reshape(-1,1)
+y = data['Salary'].values.reshape(-1,1)
 
 #Using a plot to visualize the data
 plt.title("Years of Experience vs Salary") #title for the plot
@@ -43,12 +43,23 @@ print(f"\n The total Y size is: {y.shape[0]} and is the {y.shape[0]/y.shape[0] *
 print(f"\n The Y train size is: {y_train.shape[0]} and is the {y_train.shape[0]/y.shape[0] * 100} % of the total X")
 print(f"\n The Y test size is: {y_test.shape[0]} and is the {y_test.shape[0]/y.shape[0] * 100} % of the total X")
 
+#Visualizing data before scaling
+print(f"\n-- BEFORE SCALING -- X_train:\n{x_train[:5]}")
+print(f"\n-- BEFORE SCALING -- X_test:\n{x_test[:5]}")
+print(f"\n-- BEFORE SCALING -- y_train:\n{y_train[:5]}")
+print(f"\n-- BEFORE SCALING -- y_test:\n{y_test[:5]}")
+
 #Feature scaling
 scaler = StandardScaler()
 # we are going to scale ONLY the features (i.e the X) and NOT the y!
 x_train_scaled = scaler.fit_transform(x_train) #fitting to X_train and transforming them
+x_test_scaled = scaler.transform(x_test) #transforming X_test. DO NOT FIT THEM!
 
-
+#visualizing data after scaling
+print(f"\n-- AFTER SCALING -- X_train:\n{x_train_scaled[:5]}")
+print(f"\n-- AFTER SCALING -- X_test:\n{x_test_scaled[:5]}")
+print(f"\n-- AFTER SCALING -- y_train:\n{y_train[:5]}")
+print(f"\n-- AFTER SCALING -- y_test:\n{y_test[:5]}")
 
 # --- END OF MAIN CODE ---
 
