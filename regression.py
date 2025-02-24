@@ -13,8 +13,8 @@ from sklearn.metrics import mean_squared_error
 
 # --- MAIN CODE ---
 #importing the dataset
-url = "Salary_Data.csv"
-data = pd.read_csv(url)
+path_to_data = "Salary_Data.csv"
+data = pd.read_csv(path_to_data)
 
 #Visualizing the dataset
 print(f"\nHere are the first 5 rows of the dataset:\n{data.head()}")
