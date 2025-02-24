@@ -35,9 +35,20 @@ plt.show() # renderize the plot to show it
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 101)
 
 #Checking the train and test size to prove they are 80% and 20% respectively
-print(f"\n The total X size is: {x.shape[0]} and is the {x.shape[0]/x.shape[0] * 100} % total")
+print(f"\n The total X size is: {x.shape[0]} and is the {x.shape[0]/x.shape[0] * 100} %")
 print(f"\n The X train size is: {x_train.shape[0]} and is the {x_train.shape[0]/x.shape[0] * 100} % of the total X")
 print(f"\n The X test size is: {x_test.shape[0]} and is the {x_test.shape[0]/x.shape[0] * 100} % of the total X")
+
+print(f"\n The total Y size is: {y.shape[0]} and is the {y.shape[0]/y.shape[0] * 100} %")
+print(f"\n The Y train size is: {y_train.shape[0]} and is the {y_train.shape[0]/y.shape[0] * 100} % of the total X")
+print(f"\n The Y test size is: {y_test.shape[0]} and is the {y_test.shape[0]/y.shape[0] * 100} % of the total X")
+
+#Feature scaling
+scaler = StandardScaler()
+# we are going to scale ONLY the features (i.e the X) and NOT the y!
+x_train_scaled = scaler.fit_transform(x_train) #fitting to X_train and transforming them
+
+
 
 # --- END OF MAIN CODE ---
 
