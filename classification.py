@@ -46,4 +46,20 @@ model.fit(x_train_scaled, y_train)
 #prediction over the test
 y_pred = model.predict(x_test_scaled)
 
+#Evaluating the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"\nThe accuracy of the model is: {accuracy * 100:.2f} %")
+
+#classification report
+print(f"\nClassification report:\n{classification_report(y_test, y_pred)}")
+
+# Confusion matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+sns.heatmap(conf_matrix, annot=True, fmt= 'd', cmap= 'Blues', xticklabels= dataset.target_names,
+            yticklabels= dataset.target_names)
+plt.title("Confusion Matrix")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
+
 # --- END OF MAIN CODE ---
