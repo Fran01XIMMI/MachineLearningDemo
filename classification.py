@@ -29,7 +29,7 @@ y = data['target'].values # the last column
 
 #splitting the dataset into training and test
 x_train, x_test,y_train,y_test = train_test_split(x, y, test_size=0.2, random_state=101, stratify=y)
-# note: the 'stratify' parameter that classes are wellbalanced between train and test
+# note: the 'stratify' parameter that classes are well-balanced between train and test
 
 #Feature scaling
 scaler = StandardScaler()
