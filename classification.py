@@ -7,6 +7,9 @@ from sklearn.ensemble import RandomForestClassifier # to use the RandomForest mo
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix # to evaluate the model
 import seaborn as sns # to visualize the confusion matrix
 from sklearn.datasets import load_iris #to load the Iris dataset
+
+# from regression import x_train, x_test, y_train, y_test, y_pred
+
 # --- END OF IMPORT SECTION ---
 
 # --- MAIN CODE ---
@@ -20,5 +23,27 @@ data['target'] = dataset.target #target aka the y
 #visualizing the first row of the dataset
 print(f"\nHere are the first 5 rows of the dataset:\n {data.head()}")
 
+#seperating the data in features and target
+x = data.iloc[:, :-1].values # all the columns except the last one
+y = data['target'].values # the last column
+
+#splitting the dataset into training and test
+x_train, x_test,y_train,y_test = train_test_split(x, y, test_size=0.2, random_state=101, stratify=y)
+# note: the 'stratify' parameter that classes are wellbalanced between train and test
+
+#Feature scaling
+scaler = StandardScaler()
+
+x_train_scaled = scaler.fit_transform(x_train) #fitting to X_train and transforming them
+x_test_scaled = scaler.transform(x_test) #transforming X_test. DO NOT FIT THEM!
+
+# Creating the model
+model = RandomForestClassifier(n_estimators=100, random_state=101)
+
+#Training model
+model.fit(x_train_scaled, y_train)
+
+#prediction over the test
+y_pred = model.predict(x_test_scaled)
 
 # --- END OF MAIN CODE ---
